@@ -1,0 +1,40 @@
+openapi: "3.0.2"
+info:
+  title: You Never Bike Alone API
+  version: "1.0.0-SNAPSHOT"
+
+paths:
+  /rides:
+    put:
+      summary: Updates or Creates a new ride
+      responses:
+        '200':
+          description: ride successfully updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Ride'
+        '201':
+          description: ride successfully created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Ride'
+
+    get:
+      summary: Returns a list of all rides
+      responses:
+        '200':
+          description: a list of Rides
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Ride'
+
+components:
+  schemas:
+    Ride:
+      type: object
+
