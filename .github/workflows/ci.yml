@@ -22,6 +22,7 @@ jobs:
   deploy:
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
+    needs: [verify]
     steps:
       - uses: actions/checkout@v3
       - name: Set up JDK 17
@@ -31,5 +32,5 @@ jobs:
           distribution: 'temurin'
       - name: deploy
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: mvn --batch-mode --update-snapshots deploy
+          GITHUB_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
+        run: mvn --batch-mode --update-snapshots -DskipTests deploy
