@@ -29,6 +29,7 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-          repo-token: ${{ secrets.DEPLOY_TOKEN }}
       - name: deploy
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: mvn --batch-mode --update-snapshots deploy
