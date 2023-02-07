@@ -29,5 +29,6 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-      - name: verify
+          repo-token: ${{ secrets.DEPLOY_TOKEN }}
+      - name: deploy
         run: mvn --batch-mode --update-snapshots deploy
