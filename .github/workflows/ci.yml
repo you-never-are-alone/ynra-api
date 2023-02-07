@@ -21,6 +21,8 @@ jobs:
           distribution: 'temurin'
       - name: verify
         run: mvn --batch-mode --update-snapshots verify
+      - name: debug
+        run: echo ${{ secrets.DEPLOY_TOKEN }}
       - name: deploy
         if: github.ref == 'refs/heads/main'    
         run: mvn --batch-mode -DskipTests deploy
