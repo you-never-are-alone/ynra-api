@@ -33,7 +33,7 @@
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
             <version>5.9.2</version>
-<!--            <scope>test</scope>-->
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>javax.annotation</groupId>
@@ -71,7 +71,6 @@
             <artifactId>swagger-models</artifactId>
             <version>2.2.8</version>
         </dependency>
-
     </dependencies>
 
     <build>
@@ -86,18 +85,22 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <inputSpec>${project.basedir}/src/main/resources/ynba.yaml</inputSpec>
+                            <inputSpec>${project.basedir}/src/main/resources/ynba.yml</inputSpec>
                             <generatorName>spring</generatorName>
                             <library>spring-boot</library>
                             <apiPackage>name.eric.ynba.api</apiPackage>
                             <modelPackage>name.eric.ynba.api</modelPackage>
-                            <dateLibrary>java8</dateLibrary>
-                            <delegatePattern>true</delegatePattern>
-                            <interfaceOnly>true</interfaceOnly>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
         </plugins>
     </build>
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub Packages</name>
+            <url>https://maven.pkg.github.com/auto-eric/ynba-api</url>
+        </repository>
+    </distributionManagement>
 </project>
