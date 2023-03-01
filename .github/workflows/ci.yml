@@ -24,8 +24,6 @@ jobs:
       - name: deploy
         if: github.ref == 'refs/heads/main'
         env:
-          GITHUB_USERNAME: auto-eric
           GITHUB_TOKEN: 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
         run: |
-          echo "<settings><servers><server><id>github</id><username>auto-eric</username><password>${GITHUB_TOKEN}</password></server></servers></settings>" > ~/.m2/settings.xml
           mvn --batch-mode -DskipTests deploy
