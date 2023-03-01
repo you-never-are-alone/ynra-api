@@ -2,9 +2,9 @@ name: Ride API CI
 
 on:
   pull_request:
-    branches: [main]
+    branches: [ main ]
   push:
-    branches: [main]
+    branches: [ main ]
   workflow_dispatch:
 
 jobs:
@@ -21,13 +21,11 @@ jobs:
           distribution: 'temurin'
       - name: verify
         run: mvn --batch-mode --update-snapshots verify
-      - name: debug
-        run: |
-          echo "token is ${{ secrets.DEPLOY_TOKEN }}";
-          echo "token is ${DEPLOY_TOKEN}";
       - name: deploy
-        if: github.ref == 'refs/heads/main'    
-        run: mvn --batch-mode -DskipTests deploy
+        if: github.ref == 'refs/heads/main'
         env:
           GITHUB_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
-        
+        run: |
+          mkdir ~/.m2
+          echo "<settings><servers><server><id>github</id><username>auto-eric</username><password>${GITHUB_TOKEN}</password></server></servers></settings>" > ~/.m2/settings.xml
+          mvn --batch-mode -DskipTests deploy
