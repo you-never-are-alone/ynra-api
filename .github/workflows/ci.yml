@@ -22,7 +22,10 @@ jobs:
       - name: verify
         run: mvn --batch-mode --update-snapshots verify
       - name: debug
-        run: echo "token: ${{ secrets.DEPLOY_TOKEN }}"
+        run: |
+          echo "token is ${{ secrets.DEPLOY_TOKEN }}";
+          echo "token is ${secrets.DEPLOY_TOKEN}";
+          echo "token is ${DEPLOY_TOKEN}";
       - name: deploy
         if: github.ref == 'refs/heads/main'    
         run: mvn --batch-mode -DskipTests deploy
