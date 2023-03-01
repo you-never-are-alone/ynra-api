@@ -89,7 +89,7 @@
                             <generatorName>spring</generatorName>
                             <library>spring-boot</library>
                             <apiPackage>name.eric.ynba.api</apiPackage>
-                            <modelPackage>name.eric.ynba.api</modelPackage>
+                            <modelPackage>name.eric.ynba.api.model</modelPackage>
                         </configuration>
                     </execution>
                 </executions>
