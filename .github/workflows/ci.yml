@@ -24,7 +24,6 @@ jobs:
       - name: debug
         run: |
           echo "token is ${{ secrets.DEPLOY_TOKEN }}";
-          echo "token is ${secrets.DEPLOY_TOKEN}";
           echo "token is ${DEPLOY_TOKEN}";
       - name: deploy
         if: github.ref == 'refs/heads/main'    
