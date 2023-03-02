@@ -3,9 +3,9 @@ description: Removes old workflow runs and packages
 
 
 on:
-  scheduled:
+  workflow_dispatch:
+  schedule:
     - cron: '30 5 1 * *' # once per month
-
 
 jobs:
   del_runs:
