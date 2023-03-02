@@ -1,0 +1,26 @@
+name: Cleanup
+description: Removes old workflow runs and packages
+
+
+on:
+  scheduled:
+    - cron: '30 5 1 * *' # once per month
+
+
+jobs:
+  del_runs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Delete workflow runs'
+        uses: Mattraks/delete-workflow-runs@v2
+        with:
+          token: ${{ github.token }}
+          repository: ${{ github.repository }}
+          retain_days: 30
+          keep_minimum_runs: 0
+      - name: 'delete old packages: one.avocargo.business.av-service-business'
+        uses: actions/delete-package-versions@v4
+        with:
+          package-name: 'name.eric.ybna.ynba-api'
+          min-versions-to-keep: 3
+          delete-only-pre-release-versions: "true"
