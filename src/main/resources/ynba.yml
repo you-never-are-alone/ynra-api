@@ -4,6 +4,35 @@ info:
   version: "1.0.0-SNAPSHOT"
 
 paths:
+  /routes:
+    put:
+      responses:
+        '200':
+          description: route updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Route'
+        '201':
+          description: route created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Route'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Route'
+    get:
+      responses:
+        '200':
+          description: provides a list of Routes
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RoutesList'
   /rides:
     put:
       summary: Updates or Creates a new ride
@@ -20,6 +49,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Ride'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Ride'
 
     get:
       summary: Returns a list of all rides
@@ -29,6 +64,8 @@ paths:
           content:
             application/json:
               schema:
+                allOf:
+                  - $ref: '#/components/schemas/PagedResponse'
                 type: array
                 items:
                   $ref: '#/components/schemas/Ride'
@@ -43,4 +80,49 @@ components:
           format: uuid
         name:
           type: string
+    RoutesList:
+      allOf:
+        - $ref: '#/components/schemas/PagedResponse'
+        - properties:
+            routes:
+              type: array
+              items:
+                $ref: '#/components/schemas/Route'
+    Route:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        locations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Point'
+    Point:
+      type: object
+      required:
+        - lat
+        - lon
+      properties:
+        lat:
+          type: number
+        lon:
+          type: number
 
+    PagedResponse:
+      type: object
+      properties:
+        pageSize:
+          description: Size of the page.
+          type: integer
+        currentPage:
+          description: Current page number.
+          type: integer
+        pageAmount:
+          description: The amount of pages.
+          type: integer
+        totalElements:
+          description: The total amount of elements.
+          type: integer
