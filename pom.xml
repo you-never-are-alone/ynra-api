@@ -81,15 +81,29 @@
                 <version>6.2.1</version>
                 <executions>
                     <execution>
+                        <id>generate ride</id>
                         <goals>
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <inputSpec>${project.basedir}/src/main/resources/ynba.yml</inputSpec>
+                            <inputSpec>${project.basedir}/src/main/resources/ynba-ride.yml</inputSpec>
                             <generatorName>spring</generatorName>
                             <library>spring-boot</library>
-                            <apiPackage>name.eric.ynba.api</apiPackage>
-                            <modelPackage>name.eric.ynba.api.model</modelPackage>
+                            <apiPackage>name.eric.ynba.api.ride</apiPackage>
+                            <modelPackage>name.eric.ynba.api.ride</modelPackage>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>generate user</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <inputSpec>${project.basedir}/src/main/resources/ynba-user.yml</inputSpec>
+                            <generatorName>spring</generatorName>
+                            <library>spring-boot</library>
+                            <apiPackage>name.eric.ynba.api.user</apiPackage>
+                            <modelPackage>name.eric.ynba.api.user</modelPackage>
                         </configuration>
                     </execution>
                 </executions>

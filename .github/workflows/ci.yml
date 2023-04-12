@@ -1,4 +1,4 @@
-name: Ride API CI
+name: YNBA API CI
 
 on:
   pull_request:
