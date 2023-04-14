@@ -1,6 +1,4 @@
 name: Cleanup
-description: Removes old workflow runs and packages
-
 
 on:
   workflow_dispatch:
