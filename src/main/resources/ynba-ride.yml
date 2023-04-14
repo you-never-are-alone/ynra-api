@@ -6,6 +6,7 @@ info:
 paths:
   /routes:
     put:
+      operationId: putRoute
       responses:
         '200':
           description: route updated
@@ -26,6 +27,7 @@ paths:
             schema:
               $ref: '#/components/schemas/Route'
     get:
+      operationId: getRoutes
       responses:
         '200':
           description: provides a list of Routes
@@ -35,6 +37,7 @@ paths:
                 $ref: '#/components/schemas/RoutesList'
   /rides:
     put:
+      operationId: putRide
       summary: Updates or Creates a new ride
       responses:
         '200':
@@ -57,6 +60,7 @@ paths:
               $ref: '#/components/schemas/Ride'
 
     get:
+      operationId: getRide
       summary: Returns a list of all rides
       responses:
         '200':
