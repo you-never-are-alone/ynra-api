@@ -1,6 +1,6 @@
 openapi: "3.0.2"
 info:
-  title: You Never Bike Alone API
+  title: You Never Be Alone API
   version: "1.0.0-SNAPSHOT"
 
 paths:

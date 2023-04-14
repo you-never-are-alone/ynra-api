@@ -1,6 +1,6 @@
 openapi: "3.0.2"
 info:
-  title: You Never Bike Alone User API
+  title: You-Never-Be-Alone User API
   version: "1.0.0-SNAPSHOT"
 
 paths:
@@ -32,6 +32,27 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/User'
+  /auth/login:
+    post:
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#'#/components/schemas/Login'
+      responses:
+        200:
+          description: 'Successful login'
+          content:
+            application/json:
+              schema:
+                description: 'the tokens'
+                type: object
+                properties:
+                  accessToken:
+                    type: string
+                  refreshToken:
+                    type: string
 
 components:
   schemas:
@@ -45,4 +66,13 @@ components:
           type: string
         lastname:
           type: string
-
+    Login:
+      type: object
+      required:
+        - login
+        - password
+      properties:
+        login:
+          type: string
+        password:
+          type: string
