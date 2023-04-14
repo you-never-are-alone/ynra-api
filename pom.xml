@@ -115,7 +115,7 @@
         <repository>
             <id>github</id>
             <name>GitHub Packages</name>
-            <url>https://maven.pkg.github.com/auto-eric/ynba-api</url>
+            <url>https://maven.pkg.github.com/you-never-be-alone/ynba-api</url>
         </repository>
     </distributionManagement>
 </project>

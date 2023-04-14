@@ -15,8 +15,8 @@ jobs:
           token: ${{ github.token }}
           repository: ${{ github.repository }}
           retain_days: 30
-          keep_minimum_runs: 0
-      - name: 'delete old packages: one.avocargo.business.av-service-business'
+          keep_minimum_runs: 1
+      - name: 'delete old packages'
         uses: actions/delete-package-versions@v4
         with:
           package-name: 'name.eric.ybna.ynba-api'
