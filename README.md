@@ -1,7 +1,11 @@
-# ynba-api
+# YNBA API
 
-The API can handle
-* `Route`: A path
-* `Ride`: the excecution of a `Ride`
+The API of the following parts
+* User API
+  * authentication: login
+  * User handling
+* Ride API
+  * `Route`: A path
+  * `Ride`: the execution of a `Route`
 
 
