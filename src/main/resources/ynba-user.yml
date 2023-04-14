@@ -6,6 +6,7 @@ info:
 paths:
   /users:
     put:
+      operationId: putUser
       summary: Updates or Creates a User
       responses:
         '200':
@@ -22,6 +23,7 @@ paths:
                 $ref: '#/components/schemas/User'
 
     get:
+      operationId: getUsers
       summary: Returns a list of all Users
       responses:
         '200':
@@ -34,12 +36,13 @@ paths:
                   $ref: '#/components/schemas/User'
   /auth/login:
     post:
+      operationId: login
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#'#/components/schemas/Login'
+              $ref: '#/components/schemas/Login'
       responses:
         200:
           description: 'Successful login'
