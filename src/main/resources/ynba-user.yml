@@ -42,7 +42,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Login'
+              $ref: '#/components/schemas/LoginRequest'
       responses:
         200:
           description: 'Successful login'
@@ -56,6 +56,35 @@ paths:
                     type: string
                   refreshToken:
                     type: string
+  /auth/register:
+    post:
+      operationId: register
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - username
+                - password
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+      responses:
+        200:
+          description: 'registration successful'
+          content:
+            application/json:
+              schema:
+                description: 'successful registration response'
+                type: object
+                properties:
+                  id:
+                    type: string
+                    format: UUID
 
 components:
   schemas:
@@ -69,13 +98,13 @@ components:
           type: string
         lastname:
           type: string
-    Login:
+    LoginRequest:
       type: object
       required:
-        - login
+        - username
         - password
       properties:
-        login:
+        username:
           type: string
         password:
           type: string
